@@ -15,7 +15,7 @@ export const getStaticProps = async () => {
 	const data = await resp.json();
 	//console.log('states in getStaticProps : ', data);
 
-	return { props: { data: data } };
+	return { props: { data: JSON.parse(JSON.stringify(data)) } };
 };
 
 const Ninjas = ({ data: { states } }) => {
