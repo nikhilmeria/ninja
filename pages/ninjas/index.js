@@ -19,11 +19,11 @@ const Ninjas = (props) => {
 				<h1>Ninjas</h1>
 				{props.data.map((ei) => {
 					return (
-						<Link href={'ninjas/' + ei.id} key={ei.id}>
+						<div key={ei.id}>
 							<a className={styles.single}>
 								<h3>{ei.name}</h3>
 							</a>
-						</Link>
+						</div>
 					);
 				})}
 			</div>
