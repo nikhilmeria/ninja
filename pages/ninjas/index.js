@@ -13,28 +13,21 @@ export const getStaticProps = async () => {
 		}
 	);
 	const data = await resp.json();
-	console.log('states in getStaticProps : ', data);
+	//console.log('states in getStaticProps : ', data);
 
 	return { props: { data: data } };
 };
 
 const Ninjas = ({ data: { states } }) => {
-	console.log('props : ', states);
+	//console.log('Ninjas : ', states);
 	return (
 		<>
 			<Head>
 				<title>Ninjas | Listing</title>
 			</Head>
 			<div>
-				<h1>Ninjas</h1>
+				<h1>Ninjas - {states[21].state_name}</h1>
 				<h1>Done</h1>
-				{states.map((ei) => {
-					<div key={ei.state_id}>
-						<a className={styles.single}>
-							<h3>{ei.state_name}</h3>
-						</a>
-					</div>;
-				})}
 				<h1>End</h1>
 			</div>
 		</>
