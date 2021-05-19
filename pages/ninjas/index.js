@@ -7,7 +7,7 @@ export const getStaticProps = async () => {
 		'https://cdn-api.co-vin.in/api/v2/admin/location/states',
 		{
 			headers: {
-				'Accept-Language': 'en_US',
+				'Content-Type': 'application/json',
 				'User-Agent': '*',
 			},
 		}
@@ -19,16 +19,20 @@ export const getStaticProps = async () => {
 };
 
 const Ninjas = ({ data: { states } }) => {
-	//console.log('Ninjas : ', states);
+	console.log('Ninjas : ', states);
 	return (
 		<>
 			<Head>
-				<title>Ninjas | Listing</title>
+				<title> Listing</title>
 			</Head>
 			<div>
-				<h1>Ninjas - {states[21].state_name}</h1>
-				<h1>Done</h1>
-				<h1>End</h1>
+				{states.map((ei) => (
+					<div key={ei.state_id}>
+						<a className={styles.single}>
+							<h3>{ei.state_name}</h3>
+						</a>
+					</div>
+				))}
 			</div>
 		</>
 	);
