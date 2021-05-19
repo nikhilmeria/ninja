@@ -3,13 +3,23 @@ import Link from 'next/link';
 import styles from '../../styles/Home.module.css';
 
 export const getStaticProps = async () => {
-	const resp = await fetch('https://jsonplaceholder.typicode.com/users');
+	const resp = await fetch(
+		'https://cdn-api.co-vin.in/api/v2/admin/location/states',
+		{
+			headers: {
+				'Accept-Language': 'en_US',
+				'User-Agent': '*',
+			},
+		}
+	);
 	const data = await resp.json();
-	return { props: { data } };
-}; // this is an in built function in next to fetch data
+	console.log('states in getStaticProps : ', data);
 
-const Ninjas = (props) => {
-	console.log('props :', props.data);
+	return { props: { data: data } };
+};
+
+const Ninjas = ({ data: { states } }) => {
+	console.log('props : ', states);
 	return (
 		<>
 			<Head>
@@ -17,15 +27,15 @@ const Ninjas = (props) => {
 			</Head>
 			<div>
 				<h1>Ninjas</h1>
-				{props.data.map((ei) => {
-					return (
-						<div key={ei.id}>
-							<a className={styles.single}>
-								<h3>{ei.name}</h3>
-							</a>
-						</div>
-					);
+				<h1>Done</h1>
+				{states.map((ei) => {
+					<div key={ei.state_id}>
+						<a className={styles.single}>
+							<h3>{ei.state_name}</h3>
+						</a>
+					</div>;
 				})}
+				<h1>End</h1>
 			</div>
 		</>
 	);
