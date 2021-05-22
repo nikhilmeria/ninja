@@ -15,10 +15,12 @@ export const getStaticProps = async () => {
 	const data = await resp.json();
 	console.log('states in getStaticProps : ', data);
 
-	return { props: { data } };
+	return { props: { data: JSON.stringify(data) } };
 };
 
-const Ninjas = ({ data: { states } }) => {
+const Ninjas = (props) => {
+	const newData = JSON.parse(props.data);
+	const states = newData.states;
 	console.log('Ninjas : ', states);
 	return (
 		<>
