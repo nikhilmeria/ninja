@@ -7,15 +7,15 @@ export const getStaticProps = async () => {
 		'https://cdn-api.co-vin.in/api/v2/admin/location/states',
 		{
 			headers: {
-				'Content-Type': 'application/json',
 				'User-Agent': '*',
+				Accept: 'application/json; charset=UTF-8',
 			},
 		}
 	);
 	const data = await resp.json();
-	//console.log('states in getStaticProps : ', data);
+	console.log('states in getStaticProps : ', data);
 
-	return { props: { data: JSON.parse(JSON.stringify(data)) } };
+	return { props: { data } };
 };
 
 const Ninjas = ({ data: { states } }) => {
