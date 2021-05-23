@@ -42,7 +42,7 @@ export const getStaticProps = async () => {
 const Ninjas = ({ data, error }) => (
 	<>
 		<Head>
-			<title> Listing</title>
+			<title> CoWin</title>
 		</Head>
 		<div>
 			{error && <p style={{ color: 'red' }}>{error}</p>}
